@@ -64,10 +64,10 @@ namespace constants
 		"Easy",
 		"Medium",
 		"Hard",
-		"Dynamic difficulty",
+		"Dynamic",
 		"Back"
 	};
-	//statistick
+	//statistics
 	const long long score[5] = {//score for clearing lines 
 		0   ,//no lines
 		40 ,//1 line
@@ -78,12 +78,12 @@ namespace constants
 	const int MAX_NUMBER_OF_STATISTICS_ITEMS = 6;
 	const std::string statisticsText[MAX_NUMBER_OF_STATISTICS_ITEMS] =
 	{
-		"Difficulty:  ",
-		"Score:       ",
-		"Lines:       ",
-		"Time:        ",
-		"Bot:          ",
-		"FPS:        "
+		"Difficulty:\t",
+		"Score:\t",
+		"Lines:\t",
+		"Time:\t",
+		"Bot:\t",
+		"FPS:\t"
 	};
 	enum class Stat
 	{

@@ -41,7 +41,7 @@ int main()
 
 	StatisticBox statistics(constants::N * constants::SizeOfSquare, constants::M / 3 * constants::SizeOfSquare, 0, 2 * constants::M / 3 * constants::SizeOfSquare);
 	int dx = 0;
-	bool rotate = false, pause = false, dMenu = false;
+	bool rotate = false, pause = true, dMenu = false;
 	bool isGameActive = false, isBot = false, isFirstAppearanceTetromino = true;
 	double timer = 0, mainTimer = 0, time, fpsTimer = 0;
 
@@ -80,6 +80,7 @@ int main()
 				{
 				case 0:
 					isGameActive = true;
+					clock.restart();
 					timer = 0; mainTimer = 0, time = 0;
 					pause = false;
 					A.clearField();
