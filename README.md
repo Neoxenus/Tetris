@@ -1,5 +1,6 @@
 # Tetris
-Tetris on base SFML. Realized different difficulty. Also there you can run bot.
+Tetris on base SFML. All graphics were realized using SFML.
+Realized different difficulty. Also there you can run bot.
 
 Control:
 ↑ rotate
