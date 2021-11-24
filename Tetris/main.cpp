@@ -14,7 +14,7 @@ int main()
 	unsigned int maxFps = 60, maxBotFps = 240;
 	std::ofstream cerrFile("../Logs/CERR.txt");
 	std::cerr.rdbuf(cerrFile.rdbuf());
-
+	//hide console
 	void (*Hide)(){
 		[]()
 		{
@@ -78,7 +78,7 @@ int main()
 				if(!dMenu)
 				switch (menu.choose(x, y))
 				{
-				case 0:
+				case 0://new game
 					isGameActive = true;
 					clock.restart();
 					timer = 0; mainTimer = 0, time = 0;
@@ -92,18 +92,18 @@ int main()
 					if (isBot)
 						window.setFramerateLimit(maxBotFps);
 					break;
-				case 1:
+				case 1://pause
 					if(isGameActive)
 						pause = !pause;
 					break;
 				case 2://stop
 					isGameActive = false;
 					break;
-				case 3:
+				case 3://difficulty
 					pause = true;
 					dMenu = true;
 					break;
-				case 4:
+				case 4://bot
 					isBot = !isBot;
 					if (isBot)
 						window.setFramerateLimit(maxBotFps);
@@ -123,23 +123,23 @@ int main()
 				else
 					switch (difficultMenu.choose(x, y))
 					{
-					case 4:
+					case 4://back to main menu
 						dMenu = false;
 						break;
 					isGameActive = false;
-					case 0:
+					case 0://easy
 						A.SetDefaultDelay(constants::delayEasy);
 						statistics.SetStatistics(static_cast<int>(constants::Difficulty::EASY), static_cast<int>(constants::Stat::DIFFICULTY));
 						break;
-					case 1:
+					case 1://medium
 						A.SetDefaultDelay(constants::delayMedium);
 						statistics.SetStatistics(static_cast<int>(constants::Difficulty::MEDIUM), static_cast<int>(constants::Stat::DIFFICULTY));
 						break;
-					case 2:
+					case 2://hard
 						A.SetDefaultDelay(constants::delayHard);
 						statistics.SetStatistics(static_cast<int>(constants::Difficulty::HARD), static_cast<int>(constants::Stat::DIFFICULTY));
 						break;
-					case 3:
+					case 3://dynamic
 						A.setDynamicDelay();
 						statistics.SetStatistics(static_cast<int>(constants::Difficulty::DYNAMIC), static_cast<int>(constants::Stat::DIFFICULTY));
 						break;
