@@ -13,3 +13,5 @@ Score:
 +100 for break 2 line
 +300 for break 3 line
 +1200 for break 4 line
+
+Link for SFML library https://www.sfml-dev.org/
