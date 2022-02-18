@@ -15,3 +15,4 @@ Score:
 +1200 for break 4 line
 
 Link for SFML library https://www.sfml-dev.org/
+This branck fully remaked with NugGet Packages. For run this project you need SDK for vs2017.
