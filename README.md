@@ -15,3 +15,4 @@ Score:
 +1200 for break 4 line
 
 Link for SFML library https://www.sfml-dev.org/
+To run this branch, you need install SFML and manually connect it.
