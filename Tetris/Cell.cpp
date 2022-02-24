@@ -37,8 +37,8 @@ void Cell::draw(sf::RenderWindow& window)
 {
 	sf::RectangleShape square(sf::Vector2f(constants::SizeOfSquare - constants::CellOutlines, constants::SizeOfSquare - constants::CellOutlines));
 	square.setFillColor(this->GetColorRGB(color));
-	square.setPosition(posX * constants::SizeOfSquare, posY * constants::SizeOfSquare);
-	square.move(sf::Vector2f(offsetX, offsetY));
+	square.setPosition((float)posX * constants::SizeOfSquare, (float)posY * constants::SizeOfSquare);
+	square.move(sf::Vector2f((float)offsetX, (float)offsetY));
 	square.move(constants::borderThickness, constants::borderThickness);
 	window.draw(square);
 }
