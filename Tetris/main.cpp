@@ -27,9 +27,9 @@ int main()
 	Hide();
 	sf::Clock clock, fpsClock;
 	Cell cell;
-	Field A(constants::M, constants::N, constants::height, constants::delayEasy, constants::N * constants::SizeOfSquare + constants::borderThickness, 0),
-		B(constants::M/6, constants::N, 0, 0, 0, constants::M / 2 * constants::SizeOfSquare);// static field
-	Tetromino currentTetromino(A), nextTetromino(B);
+	Field mainField(constants::M, constants::N, constants::height, constants::delayEasy, constants::N * constants::SizeOfSquare + constants::borderThickness, 0),
+		additionalField(constants::M/6, constants::N, 0, 0, 0, constants::M / 2 * constants::SizeOfSquare);// static field
+	Tetromino currentTetromino(mainField), nextTetromino(additionalField);
 	Menu menu(constants::N * constants::SizeOfSquare, constants::M / 2 * constants::SizeOfSquare,
 		constants::MAX_NUMBER_OPTIONS_MAIN_MENU, constants::mainMenu),
 		difficultMenu(constants::N * constants::SizeOfSquare, constants::M / 2 * constants::SizeOfSquare,
@@ -45,7 +45,7 @@ int main()
 	bool isGameActive = false, isBot = false, isFirstAppearanceTetromino = true;
 	double timer = 0, mainTimer = 0, time, fpsTimer = 0;
 
-	A.SetDefaultDelay(constants::delayEasy);
+	mainField.SetDefaultDelay(constants::delayEasy);
 	statistics.SetStatistics(static_cast<int>(constants::Difficulty::EASY), static_cast<int>(constants::Stat::DIFFICULTY));
 	statistics.SetStatistics(0, static_cast<int>(constants::Stat::FPS));
 	while (window.isOpen())
@@ -83,12 +83,12 @@ int main()
 					clock.restart();
 					timer = 0; mainTimer = 0, time = 0;
 					pause = false;
-					A.clearField();
+					mainField.clearField();
 					statistics.SetStatistics(0, static_cast<int>(constants::Stat::SCORE));
 					statistics.SetStatistics(0, static_cast<int>(constants::Stat::LINES));
 					statistics.SetStatistics(0, static_cast<int>(constants::Stat::TIME));
-					currentTetromino.newTetromino(A);
-					nextTetromino.newTetromino(B);
+					currentTetromino.newTetromino(mainField);
+					nextTetromino.newTetromino(additionalField);
 					if (isBot)
 						window.setFramerateLimit(maxBotFps);
 					break;
@@ -110,7 +110,7 @@ int main()
 					else
 						window.setFramerateLimit(maxFps);
 					if(isGameActive)
-						bot.analysis(currentTetromino, nextTetromino, A);
+						bot.analysis(currentTetromino, nextTetromino, mainField);
 					if (isBot)
 						statistics.SetStatistics(1, static_cast<int>(constants::Stat::BOT));
 					else
@@ -128,19 +128,19 @@ int main()
 						break;
 					isGameActive = false;
 					case 0://easy
-						A.SetDefaultDelay(constants::delayEasy);
+						mainField.SetDefaultDelay(constants::delayEasy);
 						statistics.SetStatistics(static_cast<int>(constants::Difficulty::EASY), static_cast<int>(constants::Stat::DIFFICULTY));
 						break;
 					case 1://medium
-						A.SetDefaultDelay(constants::delayMedium);
+						mainField.SetDefaultDelay(constants::delayMedium);
 						statistics.SetStatistics(static_cast<int>(constants::Difficulty::MEDIUM), static_cast<int>(constants::Stat::DIFFICULTY));
 						break;
 					case 2://hard
-						A.SetDefaultDelay(constants::delayHard);
+						mainField.SetDefaultDelay(constants::delayHard);
 						statistics.SetStatistics(static_cast<int>(constants::Difficulty::HARD), static_cast<int>(constants::Stat::DIFFICULTY));
 						break;
 					case 3://dynamic
-						A.setDynamicDelay();
+						mainField.setDynamicDelay();
 						statistics.SetStatistics(static_cast<int>(constants::Difficulty::DYNAMIC), static_cast<int>(constants::Stat::DIFFICULTY));
 						break;
 					}
@@ -173,7 +173,7 @@ int main()
 		{
 			if (isFirstAppearanceTetromino)
 			{
-				bot.analysis(currentTetromino,nextTetromino,  A);
+				bot.analysis(currentTetromino,nextTetromino,  mainField);
 				isFirstAppearanceTetromino = false;
 			}	
 			if (!pause)
@@ -189,30 +189,30 @@ int main()
 			clock.restart();
 			timer += time; mainTimer += time;
 			statistics.SetStatistics(mainTimer, static_cast<int>(constants::Stat::TIME));
-			A.updateDynamicDelay(mainTimer);
+			mainField.updateDynamicDelay(mainTimer);
 			if (pause)
 				continue;
 			if (isBot && bot.readyToFall())
-				A.SetDelay(A.GetDelay() / std::pow(50, statistics.GetStatistics(static_cast<int>(constants::Stat::DIFFICULTY))));
+				mainField.SetDelay(mainField.GetDelay() / std::pow(50, statistics.GetStatistics(static_cast<int>(constants::Stat::DIFFICULTY))));
 			if(!isBot && sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-				A.SetDelay(A.GetDelay() / 10);
+				mainField.SetDelay(mainField.GetDelay() / 10);
 			//left and right moving
-			currentTetromino.horizontalMoving(A, dx);
+			currentTetromino.horizontalMoving(mainField, dx);
 
 			//rotating
 			if (rotate)
-				currentTetromino.rotate(A);
+				currentTetromino.rotate(mainField);
 			//fps counter
 
 			//tick of timer
-			if (timer > A.GetDelay())
+			if (timer > mainField.GetDelay())
 			{
-				if (currentTetromino.falling(A))
+				if (currentTetromino.falling(mainField))
 				{
-					int numberOfLines = A.update();
+					int numberOfLines = mainField.update();
 					statistics.SetStatistics(statistics.GetStatistics(static_cast<int>(constants::Stat::SCORE)) + constants::score[numberOfLines], static_cast<int>(constants::Stat::SCORE));
 					statistics.SetStatistics(statistics.GetStatistics(static_cast<int>(constants::Stat::LINES)) + numberOfLines, static_cast<int>(constants::Stat::LINES));
-					if (A.isOver())
+					if (mainField.isOver())
 					{
 						mainTimer = 0;
 						time = 0;
@@ -222,14 +222,14 @@ int main()
 					}
 					
 					currentTetromino = nextTetromino;
-					nextTetromino.newTetromino(B);
+					nextTetromino.newTetromino(additionalField);
 					isFirstAppearanceTetromino = true;
 				}
 
 				timer = 0;
 			}
 			dx = 0; rotate = false;
-			A.ResetDelay();
+			mainField.ResetDelay();
 		}
 
 		
@@ -237,12 +237,12 @@ int main()
 		window.clear(sf::Color::Black);
 		if (isGameActive)
 		{
-			currentTetromino.draw(window, cell, A);
-			nextTetromino.draw(window, cell, B);
+			currentTetromino.draw(window, cell, mainField);
+			nextTetromino.draw(window, cell, additionalField);
 		}
 		statistics.draw(window);
-		A.draw(window, cell);
-		B.draw(window, cell);
+		mainField.draw(window, cell);
+		additionalField.draw(window, cell);
 		if (dMenu)
 			difficultMenu.draw(window);
 		else
