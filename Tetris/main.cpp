@@ -21,7 +21,7 @@ int main()
 			HWND Hide;
 			AllocConsole();
 			Hide = FindWindowA("ConsoleWindowClass", NULL);
-			ShowWindow(Hide, 0);
+			ShowWindow(Hide, 1);
 		}
 	};
 	Hide();
@@ -197,17 +197,17 @@ int main()
 			if(!isBot && sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 				mainField.SetDelay(mainField.GetDelay() / 10);
 			//left and right moving
-			currentTetromino.horizontalMoving(mainField, dx);
+			currentTetromino.horizontalMoving(dx);
 
 			//rotating
 			if (rotate)
-				currentTetromino.rotate(mainField);
+				currentTetromino.rotate();
 			//fps counter
 
 			//tick of timer
 			if (timer > mainField.GetDelay())
 			{
-				if (currentTetromino.falling(mainField))
+				if (currentTetromino.falling())
 				{
 					int numberOfLines = mainField.update();
 					statistics.SetStatistics(statistics.GetStatistics(static_cast<int>(constants::Stat::SCORE)) + constants::score[numberOfLines], static_cast<int>(constants::Stat::SCORE));
@@ -237,8 +237,8 @@ int main()
 		window.clear(sf::Color::Black);
 		if (isGameActive)
 		{
-			currentTetromino.draw(window, cell, mainField);
-			nextTetromino.draw(window, cell, additionalField);
+			currentTetromino.draw(window, cell);
+			nextTetromino.draw(window, cell);
 		}
 		statistics.draw(window);
 		mainField.draw(window, cell);

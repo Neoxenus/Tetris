@@ -1,38 +1,37 @@
 #include "Tetromino.h"
-Tetromino::Tetromino(Field A)
-{
-	
-	this->newTetromino(A);
-}
+//Tetromino::Tetromino(Field& A)
+//{
+//	this->newTetromino(A);
+//}
 
 Tetromino::~Tetromino()
 {
 }
 
-bool Tetromino::check(Field A)
+bool Tetromino::check()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (a[i].x < 0 || a[i].x >= A.Get_N() || a[i].y > A.Get_M() || a[i].y < 0)
+		if (a[i].x < 0 || a[i].x >= field.Get_N() || a[i].y > field.Get_M() || a[i].y < 0)
 			return false;
-		else if (A.GetElemField(a[i].y, a[i].x))
+		else if (field.GetElemField(a[i].y, a[i].x))
 			return false;
 	}
 	return true;
 }
 
-bool Tetromino::checkUnder(Field A)
+bool Tetromino::checkUnder()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (a[i].y+1 >= A.Get_M() || (A.GetElemField(a[i].y + 1, a[i].x)))
+		if (a[i].y+1 >= field.Get_M() || (field.GetElemField(a[i].y + 1, a[i].x)))
 			return false;
 	}
 	return true;
 
 }
 
-void Tetromino::rotate(Field A)
+void Tetromino::rotate()
 {
 	if (this->type == static_cast<int>(constants::TetrominoType::O))
 	{
@@ -48,7 +47,7 @@ void Tetromino::rotate(Field A)
 		a[i].x = x0 - y;
 		a[i].y = y0 + x;
 	}
-	if (this->check(A))
+	if (this->check())
 		return;	
 	for (int i = 0; i < 4; i++)
 		a[i] = b[i];
@@ -71,7 +70,7 @@ void Tetromino::rotate(Field A)
 	//}
 }
 
-bool Tetromino::horizontalMoving(Field A, int dx)
+bool Tetromino::horizontalMoving(int dx)
 {
 	bool flag;
 	for (int i = 0; i < 4; i++)
@@ -79,14 +78,14 @@ bool Tetromino::horizontalMoving(Field A, int dx)
 		b[i] = a[i];
 		a[i].x += dx;
 	}
-	flag = this->check(A);
+	flag = this->check();
 	if (!flag)
 		for (int i = 0; i < 4; i++)
 			a[i] = b[i];
 	return flag;
 }
 
-bool Tetromino::falling(Field & A)
+bool Tetromino::falling()
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -97,22 +96,23 @@ bool Tetromino::falling(Field & A)
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			A.SetElemField(b[i].x, b[i].y, color);
+			field.SetElemField(b[i].x, b[i].y, color);
 			a[i] = b[i];
 		}	
 		return true;
 	}*/
-	if (!this->checkUnder(A))
+	if (!this->checkUnder())
 	{
 		for (int i = 0; i < 4; i++)
-			A.SetElemField(a[i].x, a[i].y, color);
+			field.SetElemField(a[i].x, a[i].y, color);
 		return true;
 	}
 	return false;
 }
 
-void Tetromino::newTetromino(Field A)
+void Tetromino::newTetromino(Field& A)
 {
+	this->field = A;
 	static bool flag = false;
 	if (!flag)
 	{
@@ -121,12 +121,12 @@ void Tetromino::newTetromino(Field A)
 	}
 	this->type = rand() % constants::NUMBER_TYPES_TETROMINO;
 	this->color = 1 + rand() % constants::MAX_NUMBER_COLORS;
-	this->offsetX = A.GetOffsetX();
-	this->offsetY = A.GetOffsetY();
+	this->offsetX = field.GetOffsetX();
+	this->offsetY = field.GetOffsetY();
 	for (int i = 0; i < 4; i++)
 	{
-		a[i].x = constants::figures[type][i] / 2 + A.Get_posForSpawnX();
-		a[i].y = constants::figures[type][i] % 2 + A.Get_posForSpawnY();
+		a[i].x = constants::figures[type][i] / 2 + field.Get_posForSpawnX();
+		a[i].y = constants::figures[type][i] % 2 + field.Get_posForSpawnY();
 		b[i] = a[i];
 	}
 }
@@ -161,7 +161,7 @@ int Tetromino::Get_y(int i)
 	return a[i].y;
 }
 
-void Tetromino::draw(sf::RenderWindow& window, Cell cell, Field A)
+void Tetromino::draw(sf::RenderWindow& window, Cell cell)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -170,7 +170,7 @@ void Tetromino::draw(sf::RenderWindow& window, Cell cell, Field A)
 	}
 }
 
-void Tetromino::changeField(Field B)
+void Tetromino::changeField(Field& B)
 {
 	this->offsetX = B.GetOffsetX();
 	this->offsetY = B.GetOffsetY();
@@ -181,6 +181,7 @@ void Tetromino::changeField(Field B)
 		b[i] = a[i];
 	}
 }
+
 
 Tetromino& Tetromino::operator = (const Tetromino& t)
 {

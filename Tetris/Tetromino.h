@@ -11,27 +11,30 @@ class Tetromino
 {
 public:
 	//general
-	Tetromino(Field A);
+	Tetromino(Field& A) : field(A) {
+	}
 	~Tetromino();
-	void newTetromino(Field A);
+	void newTetromino(Field& A);
 	Tetromino& operator=(const Tetromino& t);
 	//control
-	void rotate(Field A);
-	bool horizontalMoving(Field A, int dx);
-	bool falling(Field &A);
+	void rotate();
+	bool horizontalMoving(int dx);
+	bool falling();
 	//bot
 	int GetType();
 	int Get_x(int i);
 	int Get_y(int i);
 
-	void draw(sf::RenderWindow& window, Cell cell, Field A);
+
+	void draw(sf::RenderWindow& window, Cell cell);
 private:
 	int color, type, offsetX, offsetY;
 	Point a[4], b[4];
+	Field& field;
 
-	bool check(Field A);
-	bool checkUnder(Field A);
+	bool check();
+	bool checkUnder();
 	int GetColor();
-	void changeField(Field B);
+	void changeField(Field& B);
 
 };

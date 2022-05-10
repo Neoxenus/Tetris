@@ -13,8 +13,13 @@ Bot::~Bot()
 void Bot::analysis(Tetromino cur, Tetromino next, Field A)
 {
 	//std::cout << "\nanalysis iteration\n";
-	Tetromino tmpDef = cur;
-	Field Ftmp = A;
+	if (cur.GetType() == 0 || next.GetType() == 0) {
+		std::cout << "";
+	}
+
+	Field Ftmp(A);
+	Tetromino tmp(Ftmp);
+
 	int numOfRotate = 0, tmp_dx = 0, numOfGaps = 0;
 	int result, numOfPillars, bestState = constants::BestState + 1, tmpState, weight;
 //	int minWeight = 4 * Ftmp.Get_M() + 1, minNumOfGaps = 5, theBestResult = -1, minNumOfPillars = Ftmp.Get_N() + 1;
@@ -22,10 +27,10 @@ void Bot::analysis(Tetromino cur, Tetromino next, Field A)
 	{
 			for (int j = -6; j <= 6; j++)
 			{
-				Tetromino tmp = tmpDef;
-				if (!tmp.horizontalMoving(Ftmp, j))
+				tmp = cur;
+				if (!tmp.horizontalMoving(j))
 					continue;
-				while (!tmp.falling(Ftmp)) {}
+				while (!tmp.falling()) {}
 				result = this->GetResult(Ftmp);
 				if (result == constants::isOver)
 				{
@@ -50,23 +55,26 @@ void Bot::analysis(Tetromino cur, Tetromino next, Field A)
 				//std::cout << "Result: " << result << " Pillars: " << numOfPillars << " Weight: " << weight << " Gaps: " << numOfGaps <<
 				//	"\t  ||||\t" << "Result: " << theBestResult << " Pillars: " << minNumOfPillars << " Weight: " << minWeight << " Gaps: " << minNumOfGaps << std::endl;
 			}
-		if ((tmpDef.GetType() == static_cast<int>(constants::TetrominoType::O)) ||
+		if ((cur.GetType() == static_cast<int>(constants::TetrominoType::O)) ||
 			(i > 0 && 
-				(tmpDef.GetType() == static_cast<int>(constants::TetrominoType::I) ||
-				tmpDef.GetType() == static_cast<int>(constants::TetrominoType::S)||
-				tmpDef.GetType() == static_cast<int>(constants::TetrominoType::Z))))
+				(cur.GetType() == static_cast<int>(constants::TetrominoType::I) ||
+				cur.GetType() == static_cast<int>(constants::TetrominoType::S)||
+				cur.GetType() == static_cast<int>(constants::TetrominoType::Z))))
 			break;
-		tmpDef.rotate(Ftmp);
+		cur.rotate();
 	}
 	this->dx = tmp_dx;
 	this->rotate = numOfRotate;
 }
 
-int Bot::analysis(const Tetromino cur, const Field A)
+int Bot::analysis(const Tetromino cur, Field A)
 {
 	//std::cout << "\nanalysis iteration\n";
-	Tetromino tmpDef = cur;
-	Field Ftmp = A;
+
+	Field Ftmp(A);
+	Tetromino tmpDef(A), tmp(Ftmp);
+	tmpDef = cur;
+	//std::cout << "\n\n&f " << &Ftmp<<"\n&A "<<&A;
 	int  numOfGaps = 0;
 	int result, numOfPillars, bestState = constants::BestState, tmpState, weight;
 	//	int minWeight = 4 * Ftmp.Get_M() + 1, minNumOfGaps = 5, theBestResult = -1, minNumOfPillars = Ftmp.Get_N() + 1;
@@ -74,10 +82,10 @@ int Bot::analysis(const Tetromino cur, const Field A)
 	{
 			for (int j = -6; j <= 6; j++)
 			{
-				Tetromino tmp = tmpDef;
-				if (!tmp.horizontalMoving(Ftmp, j))
+				tmp = tmpDef;
+				if (!tmp.horizontalMoving(j))
 					continue;
-				while (!tmp.falling(Ftmp)) {}
+				while (!tmp.falling()) {}
 				result = this->GetResult(Ftmp);
 				if (result == constants::isOver)
 				{
@@ -90,6 +98,7 @@ int Bot::analysis(const Tetromino cur, const Field A)
 				numOfPillars = this->GetNumOfPillars(Ftmp);
 				
 				Ftmp = A;
+
 				tmpState = this->evaluation_function(result, numOfPillars, weight, numOfGaps);
 				if  (bestState>tmpState)
 				{
@@ -110,7 +119,7 @@ int Bot::analysis(const Tetromino cur, const Field A)
 					tmpDef.GetType() == static_cast<int>(constants::TetrominoType::S) ||
 					tmpDef.GetType() == static_cast<int>(constants::TetrominoType::Z))))
 			break;
-		tmpDef.rotate(Ftmp);
+		tmpDef.rotate();
 	}
 	return bestState;
 }
