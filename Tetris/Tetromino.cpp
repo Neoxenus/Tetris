@@ -12,7 +12,7 @@ bool Tetromino::check()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (a[i].x < 0 || a[i].x >= field.Get_N() || a[i].y > field.Get_M() || a[i].y < 0)
+		if (a[i].x < 0 || a[i].x >= field.getWidthBlocks() || a[i].y > field.getHeightBlocks() || a[i].y < 0)
 			return false;
 		else if (field.GetElemField(a[i].y, a[i].x))
 			return false;
@@ -24,7 +24,7 @@ bool Tetromino::checkUnder()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (a[i].y+1 >= field.Get_M() || (field.GetElemField(a[i].y + 1, a[i].x)))
+		if (a[i].y+1 >= field.getHeightBlocks() || (field.GetElemField(a[i].y + 1, a[i].x)))
 			return false;
 	}
 	return true;

@@ -7,14 +7,14 @@ class Field
 {
 
 public:
-	Field(int M, int N, int height, double delay, int offsetX, int offsetY);
+	Field(int heightBlocks, int withBlocks, int height, double delay, int offsetX, int offsetY);
 	~Field();
 	int update();
 	
 	int Get_posForSpawnX();
 	int Get_posForSpawnY();
-	int Get_M();
-	int Get_N();
+	int getHeightBlocks();
+	int getWidthBlocks();
 	int Get_height();
 	int GetElemField(int x, int y);
 	void SetElemField(int x, int y, int val);
@@ -35,7 +35,7 @@ private:
 	double getDynamicDelay(double time);
 	double delay, defaultDelay;
 	bool isDelayDynamic;
-	int M, N, posForSpawnX, posForSpawnY, height, offsetX, offsetY;
+	int heightBlocks, widthBlocks, posForSpawnX, posForSpawnY, height, offsetX, offsetY;
 	std::vector<std::vector<int>> field;
 	std::vector<int> ups;
 };

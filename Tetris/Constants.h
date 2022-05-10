@@ -5,11 +5,11 @@ namespace constants
 	const int SizeOfSquare = 30, CellOutlines = 1;
 
 	//field
-	const int M = 28, N = 10, borderThickness = 1, height = 8;
+	const int heightBlocks = 28, widthBlocks = 10, borderThickness = 1, height = 8;
 	const double delayEasy = 0.7, delayMedium = 0.3, delayHard = 0.15;
 	//window
-	const int windowWidth = 2 * N * SizeOfSquare + 3 * borderThickness;
-	const int windowHeight = M * SizeOfSquare + 2 * borderThickness;
+	const int windowWidth = 2 * widthBlocks * SizeOfSquare + 3 * borderThickness;
+	const int windowHeight = heightBlocks * SizeOfSquare + 2 * borderThickness;
 
 	//tetromino + cell
 	const int MAX_NUMBER_COLORS = 7, NUMBER_TYPES_TETROMINO = 7;

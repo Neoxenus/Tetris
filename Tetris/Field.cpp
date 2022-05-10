@@ -1,26 +1,26 @@
 #include "Field.h"
 
-Field::Field(int M, int N, int height, double delay, int offsetX, int offsetY)
+Field::Field(int heightBlocks, int widhtBlocks, int height, double delay, int offsetX, int offsetY)
 {
 	this->defaultDelay = delay;
-	this->M = M;
-	this->N = N;
+	this->heightBlocks = heightBlocks;
+	this->widthBlocks = widhtBlocks;
 	this->offsetX = offsetX;
 	this->offsetY = offsetY;
 	this->height = height;
 	this->isDelayDynamic = false;
-	if (N / 2 - 2 < 0)
+	if (widhtBlocks / 2 - 2 < 0)
 		posForSpawnX = 0;
 	else
-		this->posForSpawnX = N / 2 - 2;
-	if (M / 2 > 5)
+		this->posForSpawnX = widhtBlocks / 2 - 2;
+	if (heightBlocks / 2 > 5)
 		this->posForSpawnY = 0;
 	else
-		this->posForSpawnY = M / 2 - 1;
+		this->posForSpawnY = heightBlocks / 2 - 1;
 	this->delay = delay;
 	height = 5;
 	this->clearField();
-	ups = std::vector<int>(N, 0);
+	ups = std::vector<int>(widhtBlocks, 0);
 }
 
 Field::~Field()
@@ -29,17 +29,17 @@ Field::~Field()
 
 int Field::update()
 {
-	int k = M - 1, numberOfLines = 0;
-	for (int i = M - 1; i >= 0; i--)
+	int k = heightBlocks - 1, numberOfLines = 0;
+	for (int i = heightBlocks - 1; i >= 0; i--)
 	{
 		int count = 0;
-		for (int j = 0; j < N; j++)
+		for (int j = 0; j < widthBlocks; j++)
 		{
 			if (field[i][j])
 				count++;
 			field[k][j] = field[i][j];
 		}
-		if (count < N)
+		if (count < widthBlocks)
 		{
 			k--;
 		}
@@ -49,7 +49,7 @@ int Field::update()
 		}
 
 	}
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < widthBlocks; i++)
 	{
 		ups[i] -= numberOfLines;
 		if (ups[i] < 0)
@@ -57,7 +57,7 @@ int Field::update()
 			ups[i] = 0;
 			continue;
 		}
-		while (ups[i]>0 && this->GetElemField(M - 1 - ups[i], i) == 0)
+		while (ups[i]>0 && this->GetElemField(heightBlocks - 1 - ups[i], i) == 0)
 		{
 			ups[i]--;
 		}
@@ -75,14 +75,14 @@ int Field::Get_posForSpawnY()
 	return posForSpawnY;
 }
 
-int Field::Get_M()
+int Field::getHeightBlocks()
 {
-	return this->M;
+	return this->heightBlocks;
 }
 
-int Field::Get_N()
+int Field::getWidthBlocks()
 {
-	return this->N;
+	return this->widthBlocks;
 }
 
 int Field::Get_height()
@@ -92,7 +92,7 @@ int Field::Get_height()
 
 int Field::GetElemField(int y, int x)
 {
-	if (x >= N || x<0 || y>=M || y < 0)
+	if (x >= widthBlocks || x<0 || y>=heightBlocks || y < 0)
 	{
 		std::cerr << "Incorrect arguments in function \"int Field::GetElemField(int x, int y)\"";
 		exit(-2);
@@ -103,13 +103,13 @@ int Field::GetElemField(int y, int x)
 
 void Field::SetElemField(int x, int y, int val)
 {
-	if (x >= N || x<0 || y>=M || y < 0)
+	if (x >= widthBlocks || x<0 || y>= heightBlocks || y < 0)
 	{
 		std::cerr << "Incorrect arguments in function \"void Field::SetElemField(int x, int y, int val)\"";
 		exit(-3);
 	}
-	if (ups[x] < (M - y))
-		ups[x] = M - y;
+	if (ups[x] < (heightBlocks - y))
+		ups[x] = heightBlocks - y;
 	field[y][x] = val;
 	return;
 }
@@ -132,29 +132,29 @@ void Field::ResetDelay()
 
 void Field::draw(sf::RenderWindow& window, Cell cell)
 {
-	sf::RectangleShape border(sf::Vector2f(N * constants::SizeOfSquare, constants::borderThickness));//up border
+	sf::RectangleShape border(sf::Vector2f(widthBlocks * constants::SizeOfSquare, constants::borderThickness));//up border
 	border.setFillColor(sf::Color::Red);
 	border.setPosition(sf::Vector2f(0, height * constants::SizeOfSquare));
 	border.move(sf::Vector2f(offsetX, offsetY));
 	border.move(constants::borderThickness, 0);
 	window.draw(border);
 
-	border.setPosition(sf::Vector2f(0, M * constants::SizeOfSquare + constants::borderThickness));//down border
+	border.setPosition(sf::Vector2f(0, heightBlocks * constants::SizeOfSquare + constants::borderThickness));//down border
 	border.move(sf::Vector2f(offsetX , offsetY ));
 	border.move(constants::borderThickness, 0);
 	window.draw(border);
 
-	border.setSize(sf::Vector2f(M * constants::SizeOfSquare + 2 * constants::borderThickness, constants::borderThickness));//left border
+	border.setSize(sf::Vector2f(heightBlocks * constants::SizeOfSquare + 2 * constants::borderThickness, constants::borderThickness));//left border
 	border.setPosition(sf::Vector2f(constants::borderThickness, 0));
 	border.rotate(90.f);
 	border.move(sf::Vector2f(offsetX, offsetY));
 	window.draw(border);
 
 	border.move(constants::borderThickness, 0);
-	border.move(sf::Vector2f(N * constants::SizeOfSquare, 0));//right border
+	border.move(sf::Vector2f(widthBlocks * constants::SizeOfSquare, 0));//right border
 	window.draw(border);
-	for (int i = 0; i < M; i++)
-		for (int j = 0; j < N; j++)
+	for (int i = 0; i < heightBlocks; i++)
+		for (int j = 0; j < widthBlocks; j++)
 		{
 			if (this->GetElemField(i, j) == 0)
 				continue;
@@ -175,7 +175,7 @@ int Field::GetOffsetY()
 
 void Field::clearField()
 {
-	field = std::vector<std::vector<int>>(M, std::vector<int>(N, 0));
+	field = std::vector<std::vector<int>>(heightBlocks, std::vector<int>(widthBlocks, 0));
 	return;
 }
 
@@ -190,7 +190,7 @@ void Field::SetDefaultDelay(double delay)
 bool Field::isOver()
 {
 	int i = height - 1;
-	for (int j = 0; j < N; j++)
+	for (int j = 0; j < widthBlocks; j++)
 	{
 		if (field[i][j])
 		{
@@ -217,7 +217,7 @@ void Field::updateDynamicDelay(double time)
 
 int Field::GetUps(int x)
 {
-	if (x < 0 || x >= N)
+	if (x < 0 || x >= widthBlocks)
 	{
 		std::cerr << "Incorrect argument in function \"int Field::GetUps(int x)\"";
 		exit(-1);

@@ -34,7 +34,7 @@ void Menu::draw(sf::RenderWindow& window)
 
 int Menu::choose(int posX, int posY)
 {
-	if (posX >= (constants::N * constants::SizeOfSquare + constants::borderThickness) || posY >= (constants::M / 2 * constants::SizeOfSquare) || posX < 0 || posY < 0)
+	if (posX >= (constants::widthBlocks * constants::SizeOfSquare + constants::borderThickness) || posY >= (constants::heightBlocks / 2 * constants::SizeOfSquare) || posX < 0 || posY < 0)
 	{
 		return -1;
 	}

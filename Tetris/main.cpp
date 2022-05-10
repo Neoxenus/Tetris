@@ -1,5 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include <cstdlib>
 #include <ctime>
 #include <vector>
 #include <windows.h>
@@ -25,26 +24,28 @@ int main()
 		}
 	};
 	Hide();
+	//variables
 	sf::Clock clock, fpsClock;
 	Cell cell;
-	Field mainField(constants::M, constants::N, constants::height, constants::delayEasy, constants::N * constants::SizeOfSquare + constants::borderThickness, 0),
-		additionalField(constants::M/6, constants::N, 0, 0, 0, constants::M / 2 * constants::SizeOfSquare);// static field
+	Field mainField(constants::heightBlocks, constants::widthBlocks, constants::height, constants::delayEasy, constants::widthBlocks * constants::SizeOfSquare + constants::borderThickness, 0),
+		additionalField(constants::heightBlocks /6, constants::widthBlocks, 0, 0, 0, constants::heightBlocks / 2 * constants::SizeOfSquare);// static field
 	Tetromino currentTetromino(mainField), nextTetromino(additionalField);
-	Menu menu(constants::N * constants::SizeOfSquare, constants::M / 2 * constants::SizeOfSquare,
+	Menu menu(constants::widthBlocks * constants::SizeOfSquare, constants::heightBlocks / 2 * constants::SizeOfSquare,
 		constants::MAX_NUMBER_OPTIONS_MAIN_MENU, constants::mainMenu),
-		difficultMenu(constants::N * constants::SizeOfSquare, constants::M / 2 * constants::SizeOfSquare,
+		difficultMenu(constants::widthBlocks * constants::SizeOfSquare, constants::heightBlocks / 2 * constants::SizeOfSquare,
 		constants::MAX_NUMBER_OPTIONS_DIFFICULTY_MENU, constants::difficultyMenu);
 	Bot bot;
 	sf::RenderWindow window(sf::VideoMode(constants::windowWidth, constants::windowHeight), "Tetris", sf::Style::Titlebar | sf::Style::Close );
 	
 	window.setFramerateLimit(maxFps);
 
-	StatisticBox statistics(constants::N * constants::SizeOfSquare, constants::M / 3 * constants::SizeOfSquare, 0, 2 * constants::M / 3 * constants::SizeOfSquare);
+	StatisticBox statistics(constants::widthBlocks * constants::SizeOfSquare, constants::heightBlocks / 3 * constants::SizeOfSquare, 0, 2 * constants::heightBlocks / 3 * constants::SizeOfSquare);
 	int dx = 0;
 	bool rotate = false, pause = true, dMenu = false;
 	bool isGameActive = false, isBot = false, isFirstAppearanceTetromino = true;
 	double timer = 0, mainTimer = 0, time, fpsTimer = 0;
-
+	
+	/// ////////////////////////////////////////////////////////////////////////////////////////////
 	mainField.SetDefaultDelay(constants::delayEasy);
 	statistics.SetStatistics(static_cast<int>(constants::Difficulty::EASY), static_cast<int>(constants::Stat::DIFFICULTY));
 	statistics.SetStatistics(0, static_cast<int>(constants::Stat::FPS));

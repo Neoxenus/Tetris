@@ -22,7 +22,7 @@ void Bot::analysis(Tetromino cur, Tetromino next, Field A)
 
 	int numOfRotate = 0, tmp_dx = 0, numOfGaps = 0;
 	int result, numOfPillars, bestState = constants::BestState + 1, tmpState, weight;
-//	int minWeight = 4 * Ftmp.Get_M() + 1, minNumOfGaps = 5, theBestResult = -1, minNumOfPillars = Ftmp.Get_N() + 1;
+//	int minWeight = 4 * Ftmp.getHeightBlocks() + 1, minNumOfGaps = 5, theBestResult = -1, minNumOfPillars = Ftmp.getWidthBlocks() + 1;
 	for (int i = 0; i < 4; i++)
 	{
 			for (int j = -6; j <= 6; j++)
@@ -77,7 +77,7 @@ int Bot::analysis(const Tetromino cur, Field A)
 	//std::cout << "\n\n&f " << &Ftmp<<"\n&A "<<&A;
 	int  numOfGaps = 0;
 	int result, numOfPillars, bestState = constants::BestState, tmpState, weight;
-	//	int minWeight = 4 * Ftmp.Get_M() + 1, minNumOfGaps = 5, theBestResult = -1, minNumOfPillars = Ftmp.Get_N() + 1;
+	//	int minWeight = 4 * Ftmp.getHeightBlocks() + 1, minNumOfGaps = 5, theBestResult = -1, minNumOfPillars = Ftmp.getWidthBlocks() + 1;
 	for (int i = 0; i < 4; i++)
 	{
 			for (int j = -6; j <= 6; j++)
@@ -161,7 +161,7 @@ int Bot::GetWeightOfTetromino(Tetromino cur, Field A)
 {
 	int ans=0;
 	for (int i = 0; i < 4; i++)
-		ans += (A.Get_M() - cur.Get_y(i));
+		ans += (A.getHeightBlocks() - cur.Get_y(i));
 	return ans;
 }
 
@@ -171,7 +171,7 @@ int Bot::GetNumOfGaps(Tetromino tmp, Field Ftmp)
 
 	for (int q = 0; q < 4; q++)
 	{
-		if (tmp.Get_y(q) == (Ftmp.Get_M() - 1) || Ftmp.GetElemField(tmp.Get_y(q) + 1, tmp.Get_x(q)) != 0)
+		if (tmp.Get_y(q) == (Ftmp.getHeightBlocks() - 1) || Ftmp.GetElemField(tmp.Get_y(q) + 1, tmp.Get_x(q)) != 0)
 			continue;
 		numOfGaps++;
 	}
@@ -189,7 +189,7 @@ int Bot::GetResult(Field Ftmp)
 int Bot::GetNumOfPillars(Field Ftmp)
 {
 	int numOfPillars = 0;
-	for (int j = 0; j < Ftmp.Get_N(); j++)
+	for (int j = 0; j < Ftmp.getWidthBlocks(); j++)
 	{
 		if (checkForPillars(Ftmp, j))
 		{
@@ -207,12 +207,12 @@ bool Bot::checkForPillars(Field Ftmp, int x)
 		if (Ftmp.GetUps(x + 1) - (Ftmp.GetUps(x)) >= 3)
 			return true;
 	}	
-	else if (x == (Ftmp.Get_N() - 1))
+	else if (x == (Ftmp.getWidthBlocks() - 1))
 	{
 		if (Ftmp.GetUps(x - 1) - (Ftmp.GetUps(x)) >= 3)
 			return true;
 	}
-	else if (x > 0 && x < (Ftmp.Get_N() - 1))
+	else if (x > 0 && x < (Ftmp.getWidthBlocks() - 1))
 	{
 		if ((Ftmp.GetUps(x + 1) - (Ftmp.GetUps(x)) >= 3) && (Ftmp.GetUps(x - 1) - (Ftmp.GetUps(x)) >= 3))
 			return true;
