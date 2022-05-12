@@ -1,4 +1,28 @@
 #include "Game.h"
+Game::Game() :
+	mainField(constants::heightBlocks, constants::widthBlocks, constants::height, constants::delayEasy, constants::mainFieldOffsetX, 0),
+	additionalField(constants::additonalFieldHeight, constants::widthBlocks, 0, 0, 0, constants::additionalFieldOffsetY),// static field
+	currentTetromino(mainField), nextTetromino(additionalField),
+	menu(constants::menuWidth, constants::menuHeight, constants::MAX_NUMBER_OPTIONS_MAIN_MENU, constants::mainMenu),
+	difficultMenu(constants::menuWidth, constants::menuHeight, constants::MAX_NUMBER_OPTIONS_DIFFICULTY_MENU, constants::difficultyMenu),
+	statistics(constants::statBoxWidth, constants::statBoxHeight, 0, constants::statBoxPosY),
+	window(sf::VideoMode(constants::windowWidth, constants::windowHeight), "Tetris", sf::Style::Titlebar | sf::Style::Close)
+{
+	this->window.setFramerateLimit(constants::maxFps);
+	dx = 0;
+	rotate = false;
+	pause = true;
+	dMenu = false;
+	isGameActive = false;
+	isBot = false;
+	isFirstAppearanceTetromino = true;
+	timer = 0;
+	mainTimer = 0;
+	fpsTimer = 0;
+	mainField.SetDefaultDelay(constants::delayEasy);
+	statistics.SetStatistics(static_cast<int>(constants::Difficulty::EASY), static_cast<int>(constants::Stat::DIFFICULTY));
+	statistics.SetStatistics(0, static_cast<int>(constants::Stat::FPS));
+}
 
 Game::~Game()
 {
