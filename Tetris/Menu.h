@@ -4,7 +4,7 @@
 class Menu
 {
 public:
-	Menu(float width, float height,int numberOfOptions, const std::string *text);
+	Menu(float width, float height, int numberOfOptions, const std::string *text);
 	~Menu();
 	void draw(sf::RenderWindow& window);
 	int choose(int posX, int posY);

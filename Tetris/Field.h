@@ -7,7 +7,7 @@ class Field
 {
 
 public:
-	Field(int heightBlocks, int withBlocks, int height, double delay, int offsetX, int offsetY);
+	Field(int heightBlocks, int widthBlocks, int height, double delay, int offsetX, int offsetY);
 	~Field();
 
 	////show wich methods use anothe objects////

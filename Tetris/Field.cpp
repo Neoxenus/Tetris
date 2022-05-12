@@ -1,18 +1,18 @@
 #include "Field.h"
 
-Field::Field(int heightBlocks, int widhtBlocks, int height, double delay, int offsetX, int offsetY)
+Field::Field(int heightBlocks, int widthBlocks, int height, double delay, int offsetX, int offsetY)
 {
 	this->defaultDelay = delay;
 	this->heightBlocks = heightBlocks;
-	this->widthBlocks = widhtBlocks;
+	this->widthBlocks = widthBlocks;
 	this->offsetX = offsetX;
 	this->offsetY = offsetY;
 	this->height = height;
 	this->isDelayDynamic = false;
-	if (widhtBlocks / 2 - 2 < 0)
+	if (widthBlocks / 2 - 2 < 0)
 		posForSpawnX = 0;
 	else
-		this->posForSpawnX = widhtBlocks / 2 - 2;
+		this->posForSpawnX = widthBlocks / 2 - 2;
 	if (heightBlocks / 2 > 5)
 		this->posForSpawnY = 0;
 	else
@@ -20,7 +20,7 @@ Field::Field(int heightBlocks, int widhtBlocks, int height, double delay, int of
 	this->delay = delay;
 	height = 5;
 	this->clearField();
-	ups = std::vector<int>(widhtBlocks, 0);
+	ups = std::vector<int>(widthBlocks, 0);
 }
 
 Field::~Field()

@@ -1,12 +1,18 @@
 #pragma once
 namespace constants
 {
+	//fps limit
+	const unsigned int maxFps = 60, maxBotFps = 240;
+	const double fpsCounterDelay = 0.5;
 	//cells
 	const int SizeOfSquare = 30, CellOutlines = 1;
 
 	//field
 	const int heightBlocks = 28, widthBlocks = 10, borderThickness = 1, height = 8;
 	const double delayEasy = 0.7, delayMedium = 0.3, delayHard = 0.15;
+	const int mainFieldOffsetX = constants::widthBlocks * constants::SizeOfSquare + constants::borderThickness;
+	const int additionalFieldOffsetY = constants::heightBlocks / 2 * constants::SizeOfSquare;
+	const int additonalFieldHeight = constants::heightBlocks / 6;
 	//window
 	const int windowWidth = 2 * widthBlocks * SizeOfSquare + 3 * borderThickness;
 	const int windowHeight = heightBlocks * SizeOfSquare + 2 * borderThickness;
@@ -49,6 +55,8 @@ namespace constants
 	const std::string fontFile = "../font/arial.ttf";
 
 	//menu
+	const float menuWidth = constants::widthBlocks * constants::SizeOfSquare;
+	const float menuHeight = constants::heightBlocks / 2 * constants::SizeOfSquare;
 	const int MAX_NUMBER_OPTIONS_MAIN_MENU = 5;
 	const int MAX_NUMBER_OPTIONS_DIFFICULTY_MENU = 5;
 	const std::string mainMenu[MAX_NUMBER_OPTIONS_MAIN_MENU] =
