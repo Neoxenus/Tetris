@@ -20,13 +20,9 @@ public:
 	void rotate();
 	bool horizontalMoving(int dx);
 	bool falling();
-	//bot
-	int GetType();
-	int Get_x(int i);
-	int Get_y(int i);
-
-
+	
 	void draw(sf::RenderWindow& window, Cell cell);
+	friend class Bot;
 private:
 	int color, type, offsetX, offsetY;
 	Point a[4], b[4];
@@ -37,4 +33,8 @@ private:
 	int GetColor();
 	void changeField(Field& B);
 
+	//bot
+	int GetType();
+	int Get_x(int i);
+	int Get_y(int i);
 };

@@ -51,23 +51,6 @@ void Tetromino::rotate()
 		return;	
 	for (int i = 0; i < 4; i++)
 		a[i] = b[i];
-	//for (int j = -1; j < 2; j += 2)
-	//{
-	//	this->horizontalMoving(A, j);
-	//	p = a[1];
-	//	for (int i = 0; i < 4; i++)
-	//	{
-	//		int y = a[i].y - p.y;
-	//		int x = a[i].x - p.x;
-	//		a[i].x = p.x - y;
-	//		a[i].y = p.y + x;
-	//	}
-	//	if (!this->check(A))
-	//		for (int i = 0; i < 4; i++)
-	//			a[i] = b[i];
-	//	else
-	//		return;
-	//}
 }
 
 bool Tetromino::horizontalMoving(int dx)
@@ -92,15 +75,6 @@ bool Tetromino::falling()
 		b[i] = a[i];
 		a[i].y += 1;
 	}
-	/*if (!this->check(A))
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			field.SetElemField(b[i].x, b[i].y, color);
-			a[i] = b[i];
-		}	
-		return true;
-	}*/
 	if (!this->checkUnder())
 	{
 		for (int i = 0; i < 4; i++)

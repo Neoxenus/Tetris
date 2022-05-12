@@ -229,17 +229,7 @@ Field& Field::operator=(const Field& t)
 {
 	if (this == &t)
 		return *this;
-	//this->delay = t.delay;
-	//this->defaultDelay = t.defaultDelay;
 	this->field = t.field;
-	//this->height = t.height;
-	//this->isDelayDynamic = t.isDelayDynamic;
-	//this->M = t.M;
-	//this->N = t.N;
-	//this->offsetX = t.offsetX;
-	//this->offsetY = t.offsetY;
-	//this->posForSpawnX = t.posForSpawnX;
-	//this->posForSpawnY = t.posForSpawnY;
 	this->ups = t.ups;
 	return *this;
 }

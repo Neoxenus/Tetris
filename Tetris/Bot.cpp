@@ -10,30 +10,20 @@ Bot::~Bot()
 {
 }
 
-void Bot::analysis(Tetromino cur, Tetromino next, Field A)
-{
-	//std::cout << "\nanalysis iteration\n";
-	if (cur.GetType() == 0 || next.GetType() == 0) {
-		std::cout << "";
-	}
-
+void Bot::analysis(Tetromino cur, Tetromino next, Field A){
 	Field Ftmp(A);
 	Tetromino tmp(Ftmp);
-
 	int numOfRotate = 0, tmp_dx = 0, numOfGaps = 0;
 	int result, numOfPillars, bestState = constants::BestState + 1, tmpState, weight;
-//	int minWeight = 4 * Ftmp.getHeightBlocks() + 1, minNumOfGaps = 5, theBestResult = -1, minNumOfPillars = Ftmp.getWidthBlocks() + 1;
-	for (int i = 0; i < 4; i++)
-	{
-			for (int j = -6; j <= 6; j++)
-			{
+
+	for (int i = 0; i < 4; ++i){
+			for (int j = -6; j <= 6; ++j){
 				tmp = cur;
 				if (!tmp.horizontalMoving(j))
 					continue;
 				while (!tmp.falling()) {}
 				result = this->GetResult(Ftmp);
-				if (result == constants::isOver)
-				{
+				if (result == constants::isOver){
 					Ftmp = A;
 					continue;
 				}
@@ -42,18 +32,11 @@ void Bot::analysis(Tetromino cur, Tetromino next, Field A)
 				numOfPillars = this->GetNumOfPillars(Ftmp);
 				tmpState = this->evaluation_function(result, numOfPillars, weight, numOfGaps) + analysis(next, Ftmp);
 				Ftmp = A;
-				if (bestState > tmpState)
-				{
+				if (bestState > tmpState){
 					bestState = tmpState;
-					//theBestResult = result;
-					//minNumOfGaps = numOfGaps;
-					//minNumOfPillars = numOfPillars;
-					//minWeight = weight;
 					numOfRotate = i;
 					tmp_dx = j ;
 				}
-				//std::cout << "Result: " << result << " Pillars: " << numOfPillars << " Weight: " << weight << " Gaps: " << numOfGaps <<
-				//	"\t  ||||\t" << "Result: " << theBestResult << " Pillars: " << minNumOfPillars << " Weight: " << minWeight << " Gaps: " << minNumOfGaps << std::endl;
 			}
 		if ((cur.GetType() == static_cast<int>(constants::TetrominoType::O)) ||
 			(i > 0 && 
@@ -67,51 +50,30 @@ void Bot::analysis(Tetromino cur, Tetromino next, Field A)
 	this->rotate = numOfRotate;
 }
 
-int Bot::analysis(const Tetromino cur, Field A)
-{
-	//std::cout << "\nanalysis iteration\n";
-
+int Bot::analysis(const Tetromino cur, Field A){
 	Field Ftmp(A);
 	Tetromino tmpDef(A), tmp(Ftmp);
 	tmpDef = cur;
-	//std::cout << "\n\n&f " << &Ftmp<<"\n&A "<<&A;
 	int  numOfGaps = 0;
 	int result, numOfPillars, bestState = constants::BestState, tmpState, weight;
-	//	int minWeight = 4 * Ftmp.getHeightBlocks() + 1, minNumOfGaps = 5, theBestResult = -1, minNumOfPillars = Ftmp.getWidthBlocks() + 1;
-	for (int i = 0; i < 4; i++)
-	{
-			for (int j = -6; j <= 6; j++)
-			{
+	for (int i = 0; i < 4; ++i){
+			for (int j = -6; j <= 6; ++j){
 				tmp = tmpDef;
 				if (!tmp.horizontalMoving(j))
 					continue;
 				while (!tmp.falling()) {}
 				result = this->GetResult(Ftmp);
-				if (result == constants::isOver)
-				{
+				if (result == constants::isOver){
 					Ftmp = A;
 					continue;
 				}
-
 				weight = this->GetWeightOfTetromino(tmp, Ftmp);
 				numOfGaps = this->GetNumOfGaps(tmp, Ftmp);
 				numOfPillars = this->GetNumOfPillars(Ftmp);
-				
 				Ftmp = A;
-
 				tmpState = this->evaluation_function(result, numOfPillars, weight, numOfGaps);
-				if  (bestState>tmpState)
-				{
+				if  (bestState>tmpState)		
 					bestState = tmpState;
-					//theBestResult = result;
-					//minNumOfGaps = numOfGaps;
-					//minNumOfPillars = numOfPillars;
-					//minWeight = weight;
-					//numOfRotate = i;
-					//tmp_dx = j*sign;
-				}
-				//std::cout << "Result: " << result << " Pillars: " << numOfPillars << " Weight: " << weight << " Gaps: " << numOfGaps <<
-				//	"\t  ||||\t" << "Result: " << theBestResult << " Pillars: " << minNumOfPillars << " Weight: " << minWeight << " Gaps: " << minNumOfGaps << std::endl;
 			}
 		if ((tmpDef.GetType() == static_cast<int>(constants::TetrominoType::O)) || 
 			(i > 0 && 
@@ -126,8 +88,7 @@ int Bot::analysis(const Tetromino cur, Field A)
 
 bool Bot::Get_isRotate()
 {
-	if (rotate > 0)
-	{
+	if (rotate > 0){
 		rotate--;
 		return true;
 	}

@@ -9,34 +9,52 @@ class Field
 public:
 	Field(int heightBlocks, int withBlocks, int height, double delay, int offsetX, int offsetY);
 	~Field();
+
+	////show wich methods use anothe objects////
+	//bot+main
 	int update();
-	
+	//tetro
 	int Get_posForSpawnX();
 	int Get_posForSpawnY();
+
+	//tetro+bot
 	int getHeightBlocks();
 	int getWidthBlocks();
-	int Get_height();
+	//tetro+bot
 	int GetElemField(int x, int y);
+	//tetrp
 	void SetElemField(int x, int y, int val);
-	void SetDelay(double delay);
-	double GetDelay();
-	void ResetDelay();
+
 	void draw(sf::RenderWindow& window, Cell cell);
+	//tetro
 	int GetOffsetX();
 	int GetOffsetY();
+
+	//main
 	void clearField();
 	void SetDefaultDelay(double delay);
 	bool isOver();
 	void setDynamicDelay();
 	void updateDynamicDelay(double time);
+	void SetDelay(double delay);
+
+	void ResetDelay();
+	double GetDelay();
+
+	//bot
 	int GetUps(int x);
+
 	Field& operator=(const Field& t);
 private:
-	double getDynamicDelay(double time);
 	double delay, defaultDelay;
 	bool isDelayDynamic;
 	int heightBlocks, widthBlocks, posForSpawnX, posForSpawnY, height, offsetX, offsetY;
 	std::vector<std::vector<int>> field;
 	std::vector<int> ups;
+
+
+	int Get_height();
+	double getDynamicDelay(double time);
+
 };
 
