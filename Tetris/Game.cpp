@@ -1,4 +1,7 @@
 #include "Game.h"
+/// <summary>
+/// Constructor for Game class. It used constants from Constants.h file to create different classes from this project.
+/// </summary>
 Game::Game() :
 	mainField(constants::heightBlocks, constants::widthBlocks, constants::height, constants::delayEasy, constants::mainFieldOffsetX, 0),
 	additionalField(constants::additonalFieldHeight, constants::widthBlocks, 0, 0, 0, constants::additionalFieldOffsetY),// static field
@@ -27,7 +30,10 @@ Game::Game() :
 Game::~Game()
 {
 }
-
+/// <summary>
+/// Method of Game class which contained implementation of tetris game.
+/// </summary>
+/// <returns>Return 0 if method complete correctly</returns>
 int Game::start()
 {
 	while (window.isOpen())

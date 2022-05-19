@@ -1,0 +1,95 @@
+\hypertarget{class_bot}{}\doxysection{Bot Class Reference}
+\label{class_bot}\index{Bot@{Bot}}
+
+
+\mbox{\hyperlink{class_bot}{Bot}} class used field and 2 tetromino to get the best position and values to contol them.  
+
+
+
+
+{\ttfamily \#include $<$Bot.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_bot_ad3caff7fae06ebc75208758e11ee96ca}\label{class_bot_ad3caff7fae06ebc75208758e11ee96ca}} 
+{\bfseries Bot} ()
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{class_bot}{Bot}} class to initialised some variables. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bot_aa7d4c92c71c99ab93b302d561a14963e}{analysis}} (\mbox{\hyperlink{class_tetromino}{Tetromino}} cur, \mbox{\hyperlink{class_tetromino}{Tetromino}} next, \mbox{\hyperlink{class_field}{Field}} A)
+\begin{DoxyCompactList}\small\item\em Method which find the best state to this figures in the field and find optional control to get this state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_bot_abec9a36192469cb0cf0efac6c384a239}{Get\+\_\+is\+Rotate}} ()
+\begin{DoxyCompactList}\small\item\em Method to get variable of rotating. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_bot_aec01c7633dc7bb42755122ef8d28af56}{Get\+\_\+dx}} ()
+\begin{DoxyCompactList}\small\item\em Method to get variable of horizontal moving. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_bot_a1478bd49d1066906754ae3288c9180c5}{ready\+To\+Fall}} ()
+\begin{DoxyCompactList}\small\item\em Method wich say if figure will stand in optional state after fall. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_bot}{Bot}} class used field and 2 tetromino to get the best position and values to contol them. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bot_aa7d4c92c71c99ab93b302d561a14963e}\label{class_bot_aa7d4c92c71c99ab93b302d561a14963e}} 
+\index{Bot@{Bot}!analysis@{analysis}}
+\index{analysis@{analysis}!Bot@{Bot}}
+\doxysubsubsection{\texorpdfstring{analysis()}{analysis()}}
+{\footnotesize\ttfamily void Bot\+::analysis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tetromino}{Tetromino}}}]{cur,  }\item[{\mbox{\hyperlink{class_tetromino}{Tetromino}}}]{next,  }\item[{\mbox{\hyperlink{class_field}{Field}}}]{A }\end{DoxyParamCaption})}
+
+
+
+Method which find the best state to this figures in the field and find optional control to get this state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur} & Current tetromino on the field\\
+\hline
+{\em next} & Next tetromino on the field\\
+\hline
+{\em A} & Current field\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bot_aec01c7633dc7bb42755122ef8d28af56}\label{class_bot_aec01c7633dc7bb42755122ef8d28af56}} 
+\index{Bot@{Bot}!Get\_dx@{Get\_dx}}
+\index{Get\_dx@{Get\_dx}!Bot@{Bot}}
+\doxysubsubsection{\texorpdfstring{Get\_dx()}{Get\_dx()}}
+{\footnotesize\ttfamily int Bot\+::\+Get\+\_\+dx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to get variable of horizontal moving. 
+
+\begin{DoxyReturn}{Returns}
+Return integer value to move. (If return value \texorpdfstring{$<$}{<} 0 we need move to left)
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bot_abec9a36192469cb0cf0efac6c384a239}\label{class_bot_abec9a36192469cb0cf0efac6c384a239}} 
+\index{Bot@{Bot}!Get\_isRotate@{Get\_isRotate}}
+\index{Get\_isRotate@{Get\_isRotate}!Bot@{Bot}}
+\doxysubsubsection{\texorpdfstring{Get\_isRotate()}{Get\_isRotate()}}
+{\footnotesize\ttfamily bool Bot\+::\+Get\+\_\+is\+Rotate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to get variable of rotating. 
+
+\begin{DoxyReturn}{Returns}
+Return true if we need rotate figure to get optional state
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bot_a1478bd49d1066906754ae3288c9180c5}\label{class_bot_a1478bd49d1066906754ae3288c9180c5}} 
+\index{Bot@{Bot}!readyToFall@{readyToFall}}
+\index{readyToFall@{readyToFall}!Bot@{Bot}}
+\doxysubsubsection{\texorpdfstring{readyToFall()}{readyToFall()}}
+{\footnotesize\ttfamily bool Bot\+::ready\+To\+Fall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method wich say if figure will stand in optional state after fall. 
+
+\begin{DoxyReturn}{Returns}
+Return true if current figure ready to fall
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Tetris/Bot.\+h\item 
+Tetris/Bot.\+cpp\end{DoxyCompactItemize}

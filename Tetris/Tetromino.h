@@ -7,12 +7,14 @@
 #include "Point.h"
 #include "Cell.h"
 #include "Constants.h"
+/// <summary>
+/// Class to implement tetromino
+/// </summary>
 class Tetromino
 {
 public:
 	//general
-	Tetromino(Field& A) : field(A) {
-	}
+	Tetromino(Field& A);
 	~Tetromino();
 	void newTetromino(Field& A);
 	Tetromino& operator=(const Tetromino& t);

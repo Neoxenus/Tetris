@@ -2,6 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Cell.h"
+/// <summary>
+/// Class for field implementaion to tetris game
+/// </summary>
 class Field
 {
 

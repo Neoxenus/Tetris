@@ -2,6 +2,9 @@
 #include "Menu.h"
 #include "StatisticBox.h"
 #include "Bot.h"
+/// <summary>
+/// Main class for tetris game. It implemented the main logic.
+/// </summary>
 class Game
 {
 public:

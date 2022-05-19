@@ -1,6 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Constants.h"
+/// <summary>
+/// Class for menu
+/// </summary>
 class Menu
 {
 public:

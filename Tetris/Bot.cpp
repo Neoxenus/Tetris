@@ -1,5 +1,8 @@
 #include "Bot.h"
 
+/// <summary>
+/// Constructor of Bot class to initialised some variables.
+/// </summary>
 Bot::Bot()
 {
 	rotate = 0;
@@ -9,7 +12,13 @@ Bot::Bot()
 Bot::~Bot()
 {
 }
-
+/// <summary>
+/// Method which find the best state to this figures in the field 
+/// and find optional control to get this state.
+/// </summary>
+/// <param name="cur">Current tetromino on the field</param>
+/// <param name="next">Next tetromino on the field</param>
+/// <param name="A">Current field</param>
 void Bot::analysis(Tetromino cur, Tetromino next, Field A){
 	Field Ftmp(A);
 	Tetromino tmp(Ftmp);
@@ -85,7 +94,10 @@ int Bot::analysis(const Tetromino cur, Field A){
 	}
 	return bestState;
 }
-
+/// <summary>
+/// Method to get variable of rotating.
+/// </summary>
+/// <returns>Return true if we need rotate figure to get optional state</returns>
 bool Bot::Get_isRotate()
 {
 	if (rotate > 0){
@@ -95,7 +107,10 @@ bool Bot::Get_isRotate()
 	return false;
 }
 
-
+/// <summary>
+/// Method to get variable of horizontal moving.
+/// </summary>
+/// <returns>Return integer value to move. (If return value < 0 we need move to left)</returns>
 int Bot::Get_dx()
 {
 	if (dx > 0)
@@ -111,6 +126,10 @@ int Bot::Get_dx()
 	return 0;
 }
 
+/// <summary>
+/// Method wich say if figure will stand in optional state after fall.
+/// </summary>
+/// <returns>Return true if current figure ready to fall</returns>
 bool Bot::readyToFall()
 {
 	if (rotate == 0 && dx == 0)

@@ -1,0 +1,64 @@
+\hypertarget{_field_8h_source}{}\doxysection{Field.\+h}
+\label{_field_8h_source}\index{Tetris/Field.h@{Tetris/Field.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Cell.h"{}}}
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_field}{Field}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{public}:}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_field_a263bdafdc4368727bf587eca05385383}{Field}}(\textcolor{keywordtype}{int} heightBlocks, \textcolor{keywordtype}{int} widthBlocks, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{double} delay, \textcolor{keywordtype}{int} offsetX, \textcolor{keywordtype}{int} offsetY);}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_field}{\string~Field}}();}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{16     \textcolor{comment}{//bot+main}}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_field_a843252fe9f43ceedfd7b1b1e74dc72aa}{update}}();}
+\DoxyCodeLine{18     \textcolor{comment}{//tetro}}
+\DoxyCodeLine{19     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_field_a76f2a29d4dea928692e4a38cc5707f6a}{Get\_posForSpawnX}}();}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_field_ad287fd934296c711c0adce6444a2eac3}{Get\_posForSpawnY}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{comment}{//tetro+bot}}
+\DoxyCodeLine{23     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_field_a1ab934794d04621ab28f478ad89e5cf2}{getHeightBlocks}}();}
+\DoxyCodeLine{24     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_field_a407146c5e12afbe3d4f27676342c0016}{getWidthBlocks}}();}
+\DoxyCodeLine{25     \textcolor{comment}{//tetro+bot}}
+\DoxyCodeLine{26     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_field_ade26366298f81c8b2146b3f429396fde}{GetElemField}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{27     \textcolor{comment}{//tetrp}}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_field_aea22064b41925dce3dbf06acf888e20b}{SetElemField}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} val);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_field_afc40e172ea023e52f0223468edb1694d}{draw}}(sf::RenderWindow\& window, \mbox{\hyperlink{class_cell}{Cell}} cell);}
+\DoxyCodeLine{31     \textcolor{comment}{//tetro}}
+\DoxyCodeLine{32     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_field_ae9367c445eeb1ceb65375358c036f70e}{GetOffsetX}}();}
+\DoxyCodeLine{33     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_field_ac73b4106b0d0d07ab2aeee568a4e0556}{GetOffsetY}}();}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{comment}{//main}}
+\DoxyCodeLine{36     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_field_a753a1dbb8d1e8b6159309bdfeec3d1f1}{clearField}}();}
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_field_a46d362fe2097f2e3b47852c6d54bd47b}{SetDefaultDelay}}(\textcolor{keywordtype}{double} delay);}
+\DoxyCodeLine{38     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_field_a6d9fc951dfd86a494c5350a1486a0944}{isOver}}();}
+\DoxyCodeLine{39     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_field_a1a996e6397b553af6dba979597549dce}{setDynamicDelay}}();}
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_field_a76d85ee63f4de0a6a098a9ee1d6c2725}{updateDynamicDelay}}(\textcolor{keywordtype}{double} time);}
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_field_a8aadbd8bce8cb70d0b987706ac11639d}{SetDelay}}(\textcolor{keywordtype}{double} delay);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_field_a28bf1fc180c8775f4e3d19d5c381cfc5}{ResetDelay}}();}
+\DoxyCodeLine{44     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_field_a915bcf96423c46c119ff50c04ec423e9}{GetDelay}}();}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{comment}{//bot}}
+\DoxyCodeLine{47     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_field_aa1b5ae982964d09c012f1b83d3abb384}{GetUps}}(\textcolor{keywordtype}{int} x);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \mbox{\hyperlink{class_field}{Field}}\& \mbox{\hyperlink{class_field_a1cb1bba1a3467ce6e55d5191fcd9a63e}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_field}{Field}}\& t);}
+\DoxyCodeLine{50 \textcolor{keyword}{private}:}
+\DoxyCodeLine{51     \textcolor{keywordtype}{double} delay, defaultDelay;}
+\DoxyCodeLine{52     \textcolor{keywordtype}{bool} isDelayDynamic;}
+\DoxyCodeLine{53     \textcolor{keywordtype}{int} heightBlocks, widthBlocks, posForSpawnX, posForSpawnY, height, offsetX, offsetY;}
+\DoxyCodeLine{54     std::vector<std::vector<int>> field;}
+\DoxyCodeLine{55     std::vector<int> ups;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keywordtype}{int} Get\_height();}
+\DoxyCodeLine{59     \textcolor{keywordtype}{double} getDynamicDelay(\textcolor{keywordtype}{double} time);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \};}
+\DoxyCodeLine{62 }
+
+\end{DoxyCode}

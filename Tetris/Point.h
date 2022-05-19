@@ -1,4 +1,7 @@
 #pragma once
+/// <summary>
+/// Class-helper to tetromino class which implement point
+/// </summary>
 class Point
 {
 public:

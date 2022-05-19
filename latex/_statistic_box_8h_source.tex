@@ -1,0 +1,24 @@
+\hypertarget{_statistic_box_8h_source}{}\doxysection{Statistic\+Box.\+h}
+\label{_statistic_box_8h_source}\index{Tetris/StatisticBox.h@{Tetris/StatisticBox.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Constants.h"{}}}
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_statistic_box}{StatisticBox}}}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9 \textcolor{keyword}{public}:}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_statistic_box_a09861102bd797084ad8985058e2e0e12}{StatisticBox}}(\textcolor{keywordtype}{float} width, \textcolor{keywordtype}{float} height, \textcolor{keywordtype}{int} posX, \textcolor{keywordtype}{int} posY);}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_statistic_box_a873332b6e51157257e4c087ba92f1291}{\string~StatisticBox}}();}
+\DoxyCodeLine{12     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_statistic_box_ad75b18d89d6ccab49a03eab1d943e267}{draw}}(sf::RenderWindow\& window);}
+\DoxyCodeLine{13     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_statistic_box_aa63a342d66a5c905cf7c643817c545d6}{SetStatistics}}(\textcolor{keywordtype}{long} \textcolor{keywordtype}{double} value, \textcolor{keywordtype}{int} type);}
+\DoxyCodeLine{14     \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_statistic_box_ac33abdbdd7862c28644f925fdcb4277d}{GetStatistics}}(\textcolor{keywordtype}{int} type);}
+\DoxyCodeLine{15 \textcolor{keyword}{private}:}
+\DoxyCodeLine{16     \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} values[constants::MAX\_NUMBER\_OF\_STATISTICS\_ITEMS];}
+\DoxyCodeLine{17     sf::Font font;}
+\DoxyCodeLine{18     sf::Text text[constants::MAX\_NUMBER\_OF\_STATISTICS\_ITEMS];}
+\DoxyCodeLine{19     \textcolor{keywordtype}{float} width, height;}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} posX, posY;}
+\DoxyCodeLine{21 \};}
+
+\end{DoxyCode}

@@ -1,4 +1,11 @@
 #include "StatisticBox.h"
+/// <summary>
+/// Constructor to statistic box
+/// </summary>
+/// <param name="width">Width in px</param>
+/// <param name="height">Height in px</param>
+/// <param name="posX">X of position in px</param>
+/// <param name="posY">Y of positon px</param>
 StatisticBox::StatisticBox(float width, float height, int posX, int posY)
 {
 	this->width = width;
@@ -23,11 +30,16 @@ StatisticBox::StatisticBox(float width, float height, int posX, int posY)
 	}
 	
 }
-
+/// <summary>
+/// Deconstructor
+/// </summary>
 StatisticBox::~StatisticBox()
 {
 }
-
+/// <summary>
+/// Method to draw statistic box
+/// </summary>
+/// <param name="window">Render window</param>
 void StatisticBox::draw(sf::RenderWindow& window)
 {
 	for (int i = 0; i < constants::MAX_NUMBER_OF_STATISTICS_ITEMS; i++)
@@ -35,7 +47,11 @@ void StatisticBox::draw(sf::RenderWindow& window)
 		window.draw(text[i]);
 	}
 }
-
+/// <summary>
+/// Method wich set value of statistic
+/// </summary>
+/// <param name="value">Value to set</param>
+/// <param name="type">Statistic in wich set</param>
 void StatisticBox::SetStatistics(long double value, int type)
 {
 	if (type < 0 || type >= constants::MAX_NUMBER_OF_STATISTICS_ITEMS)
@@ -55,7 +71,11 @@ void StatisticBox::SetStatistics(long double value, int type)
 	this->values[type] = value;
 	text[type].setString(constants::statisticsText[type] + std::to_string(static_cast<long>(value)));
 }
-
+/// <summary>
+/// Getter for statistic
+/// </summary>
+/// <param name="type">Statistic to get</param>
+/// <returns>Return value of choosen statistic</returns>
 long double StatisticBox::GetStatistics(int type)
 {
 	if (type < 0 || type >= constants::MAX_NUMBER_OF_STATISTICS_ITEMS)

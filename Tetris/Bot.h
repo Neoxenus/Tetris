@@ -1,6 +1,9 @@
 #pragma once
 #include "Field.h"
 #include "Tetromino.h"
+/// <summary>
+/// Bot class used field and 2 tetromino to get the best position and values to contol them.
+/// </summary>
 class Bot
 {
 public:

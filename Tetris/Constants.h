@@ -1,4 +1,7 @@
 #pragma once
+/// <summary>
+/// Namespace with all constants of this project
+/// </summary>
 namespace constants
 {
 	//fps limit

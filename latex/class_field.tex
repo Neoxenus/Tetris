@@ -1,0 +1,353 @@
+\hypertarget{class_field}{}\doxysection{Field Class Reference}
+\label{class_field}\index{Field@{Field}}
+
+
+Class for field implementaion to tetris game  
+
+
+
+
+{\ttfamily \#include $<$Field.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_field_a263bdafdc4368727bf587eca05385383}{Field}} (int height\+Blocks, int width\+Blocks, int height, double delay, int offsetX, int offsetY)
+\begin{DoxyCompactList}\small\item\em Constructor wich set size off field and else useful parameters \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_field_a843252fe9f43ceedfd7b1b1e74dc72aa}{update}} ()
+\begin{DoxyCompactList}\small\item\em Updating of field \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_field_a76f2a29d4dea928692e4a38cc5707f6a}{Get\+\_\+pos\+For\+SpawnX}} ()
+\begin{DoxyCompactList}\small\item\em One of getters to get position of spawn for figure \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_field_ad287fd934296c711c0adce6444a2eac3}{Get\+\_\+pos\+For\+SpawnY}} ()
+\begin{DoxyCompactList}\small\item\em One of getters to get position of spawn for figure \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_field_a1ab934794d04621ab28f478ad89e5cf2}{get\+Height\+Blocks}} ()
+\begin{DoxyCompactList}\small\item\em Get height of field \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_field_a407146c5e12afbe3d4f27676342c0016}{get\+Width\+Blocks}} ()
+\begin{DoxyCompactList}\small\item\em Get width of field \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_field_ade26366298f81c8b2146b3f429396fde}{Get\+Elem\+Field}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Get element of field in some position \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_field_aea22064b41925dce3dbf06acf888e20b}{Set\+Elem\+Field}} (int x, int y, int val)
+\begin{DoxyCompactList}\small\item\em Set element in some position \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_field_afc40e172ea023e52f0223468edb1694d}{draw}} (sf\+::\+Render\+Window \&window, \mbox{\hyperlink{class_cell}{Cell}} cell)
+\begin{DoxyCompactList}\small\item\em Mehhod to draw field \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_field_ae9367c445eeb1ceb65375358c036f70e}{Get\+OffsetX}} ()
+\begin{DoxyCompactList}\small\item\em Getter for offset to spawn tetromino \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_field_ac73b4106b0d0d07ab2aeee568a4e0556}{Get\+OffsetY}} ()
+\begin{DoxyCompactList}\small\item\em Getter for offset to spawn tetromino \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_field_a753a1dbb8d1e8b6159309bdfeec3d1f1}\label{class_field_a753a1dbb8d1e8b6159309bdfeec3d1f1}} 
+void {\bfseries clear\+Field} ()
+\begin{DoxyCompactList}\small\item\em Method to clear field \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_field_a46d362fe2097f2e3b47852c6d54bd47b}{Set\+Default\+Delay}} (double delay)
+\begin{DoxyCompactList}\small\item\em Method to set default delay \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_field_a6d9fc951dfd86a494c5350a1486a0944}{is\+Over}} ()
+\begin{DoxyCompactList}\small\item\em Method to check game over state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_field_a1a996e6397b553af6dba979597549dce}\label{class_field_a1a996e6397b553af6dba979597549dce}} 
+void {\bfseries set\+Dynamic\+Delay} ()
+\begin{DoxyCompactList}\small\item\em Method to set dynamic delay \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_field_a76d85ee63f4de0a6a098a9ee1d6c2725}{update\+Dynamic\+Delay}} (double time)
+\begin{DoxyCompactList}\small\item\em Method to update dynamic delay with time variable \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_field_a8aadbd8bce8cb70d0b987706ac11639d}{Set\+Delay}} (double delay)
+\begin{DoxyCompactList}\small\item\em Setter for delay value \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_field_a28bf1fc180c8775f4e3d19d5c381cfc5}\label{class_field_a28bf1fc180c8775f4e3d19d5c381cfc5}} 
+void {\bfseries Reset\+Delay} ()
+\begin{DoxyCompactList}\small\item\em Method to reset delay to default value \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_field_a915bcf96423c46c119ff50c04ec423e9}{Get\+Delay}} ()
+\begin{DoxyCompactList}\small\item\em Getter for delay value \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_field_aa1b5ae982964d09c012f1b83d3abb384}{Get\+Ups}} (int x)
+\begin{DoxyCompactList}\small\item\em Method to get the Y of position of top block \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_field}{Field}} \& \mbox{\hyperlink{class_field_a1cb1bba1a3467ce6e55d5191fcd9a63e}{operator=}} (const \mbox{\hyperlink{class_field}{Field}} \&t)
+\begin{DoxyCompactList}\small\item\em Overload of \char`\"{}operator=\char`\"{} to field class. Copy the state of current field \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for field implementaion to tetris game 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_field_a263bdafdc4368727bf587eca05385383}\label{class_field_a263bdafdc4368727bf587eca05385383}} 
+\index{Field@{Field}!Field@{Field}}
+\index{Field@{Field}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{Field()}{Field()}}
+{\footnotesize\ttfamily Field\+::\+Field (\begin{DoxyParamCaption}\item[{int}]{height\+Blocks,  }\item[{int}]{width\+Blocks,  }\item[{int}]{height,  }\item[{double}]{delay,  }\item[{int}]{offsetX,  }\item[{int}]{offsetY }\end{DoxyParamCaption})}
+
+
+
+Constructor wich set size off field and else useful parameters 
+
+
+\begin{DoxyParams}{Parameters}
+{\em height\+Blocks} & Height in blocks\\
+\hline
+{\em width\+Blocks} & Width in blocks\\
+\hline
+{\em height} & Height of part of field from top to work area\\
+\hline
+{\em delay} & Delay of field to fall tetromino\\
+\hline
+{\em offsetX} & X offset to spawn tetromino\\
+\hline
+{\em offsetY} & Y offset to spawn tetromino\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_field_afc40e172ea023e52f0223468edb1694d}\label{class_field_afc40e172ea023e52f0223468edb1694d}} 
+\index{Field@{Field}!draw@{draw}}
+\index{draw@{draw}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Field\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\mbox{\hyperlink{class_cell}{Cell}}}]{cell }\end{DoxyParamCaption})}
+
+
+
+Mehhod to draw field 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Render window\\
+\hline
+{\em cell} & Object-\/helper\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_field_a76f2a29d4dea928692e4a38cc5707f6a}\label{class_field_a76f2a29d4dea928692e4a38cc5707f6a}} 
+\index{Field@{Field}!Get\_posForSpawnX@{Get\_posForSpawnX}}
+\index{Get\_posForSpawnX@{Get\_posForSpawnX}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{Get\_posForSpawnX()}{Get\_posForSpawnX()}}
+{\footnotesize\ttfamily int Field\+::\+Get\+\_\+pos\+For\+SpawnX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+One of getters to get position of spawn for figure 
+
+\begin{DoxyReturn}{Returns}
+Return X of position
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_ad287fd934296c711c0adce6444a2eac3}\label{class_field_ad287fd934296c711c0adce6444a2eac3}} 
+\index{Field@{Field}!Get\_posForSpawnY@{Get\_posForSpawnY}}
+\index{Get\_posForSpawnY@{Get\_posForSpawnY}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{Get\_posForSpawnY()}{Get\_posForSpawnY()}}
+{\footnotesize\ttfamily int Field\+::\+Get\+\_\+pos\+For\+SpawnY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+One of getters to get position of spawn for figure 
+
+\begin{DoxyReturn}{Returns}
+Return Y of position
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_a915bcf96423c46c119ff50c04ec423e9}\label{class_field_a915bcf96423c46c119ff50c04ec423e9}} 
+\index{Field@{Field}!GetDelay@{GetDelay}}
+\index{GetDelay@{GetDelay}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{GetDelay()}{GetDelay()}}
+{\footnotesize\ttfamily double Field\+::\+Get\+Delay (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for delay value 
+
+\begin{DoxyReturn}{Returns}
+Return delay value
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_ade26366298f81c8b2146b3f429396fde}\label{class_field_ade26366298f81c8b2146b3f429396fde}} 
+\index{Field@{Field}!GetElemField@{GetElemField}}
+\index{GetElemField@{GetElemField}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{GetElemField()}{GetElemField()}}
+{\footnotesize\ttfamily int Field\+::\+Get\+Elem\+Field (\begin{DoxyParamCaption}\item[{int}]{y,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Get element of field in some position 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & Y of position\\
+\hline
+{\em x} & X of position\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_a1ab934794d04621ab28f478ad89e5cf2}\label{class_field_a1ab934794d04621ab28f478ad89e5cf2}} 
+\index{Field@{Field}!getHeightBlocks@{getHeightBlocks}}
+\index{getHeightBlocks@{getHeightBlocks}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{getHeightBlocks()}{getHeightBlocks()}}
+{\footnotesize\ttfamily int Field\+::get\+Height\+Blocks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get height of field 
+
+\begin{DoxyReturn}{Returns}
+Return height in blocks
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_ae9367c445eeb1ceb65375358c036f70e}\label{class_field_ae9367c445eeb1ceb65375358c036f70e}} 
+\index{Field@{Field}!GetOffsetX@{GetOffsetX}}
+\index{GetOffsetX@{GetOffsetX}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{GetOffsetX()}{GetOffsetX()}}
+{\footnotesize\ttfamily int Field\+::\+Get\+OffsetX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for offset to spawn tetromino 
+
+\begin{DoxyReturn}{Returns}
+Return X of offset
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_ac73b4106b0d0d07ab2aeee568a4e0556}\label{class_field_ac73b4106b0d0d07ab2aeee568a4e0556}} 
+\index{Field@{Field}!GetOffsetY@{GetOffsetY}}
+\index{GetOffsetY@{GetOffsetY}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{GetOffsetY()}{GetOffsetY()}}
+{\footnotesize\ttfamily int Field\+::\+Get\+OffsetY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for offset to spawn tetromino 
+
+\begin{DoxyReturn}{Returns}
+Return Y of offset
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_aa1b5ae982964d09c012f1b83d3abb384}\label{class_field_aa1b5ae982964d09c012f1b83d3abb384}} 
+\index{Field@{Field}!GetUps@{GetUps}}
+\index{GetUps@{GetUps}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{GetUps()}{GetUps()}}
+{\footnotesize\ttfamily int Field\+::\+Get\+Ups (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Method to get the Y of position of top block 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X of block\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Y of top block with this X
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_a407146c5e12afbe3d4f27676342c0016}\label{class_field_a407146c5e12afbe3d4f27676342c0016}} 
+\index{Field@{Field}!getWidthBlocks@{getWidthBlocks}}
+\index{getWidthBlocks@{getWidthBlocks}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{getWidthBlocks()}{getWidthBlocks()}}
+{\footnotesize\ttfamily int Field\+::get\+Width\+Blocks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get width of field 
+
+\begin{DoxyReturn}{Returns}
+Return width in blocks
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_a6d9fc951dfd86a494c5350a1486a0944}\label{class_field_a6d9fc951dfd86a494c5350a1486a0944}} 
+\index{Field@{Field}!isOver@{isOver}}
+\index{isOver@{isOver}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{isOver()}{isOver()}}
+{\footnotesize\ttfamily bool Field\+::is\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to check game over state 
+
+\begin{DoxyReturn}{Returns}
+Return trur if it\textquotesingle{}s game over
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_a1cb1bba1a3467ce6e55d5191fcd9a63e}\label{class_field_a1cb1bba1a3467ce6e55d5191fcd9a63e}} 
+\index{Field@{Field}!operator=@{operator=}}
+\index{operator=@{operator=}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_field}{Field}} \& Field\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_field}{Field}} \&}]{t }\end{DoxyParamCaption})}
+
+
+
+Overload of \char`\"{}operator=\char`\"{} to field class. Copy the state of current field 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_a46d362fe2097f2e3b47852c6d54bd47b}\label{class_field_a46d362fe2097f2e3b47852c6d54bd47b}} 
+\index{Field@{Field}!SetDefaultDelay@{SetDefaultDelay}}
+\index{SetDefaultDelay@{SetDefaultDelay}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{SetDefaultDelay()}{SetDefaultDelay()}}
+{\footnotesize\ttfamily void Field\+::\+Set\+Default\+Delay (\begin{DoxyParamCaption}\item[{double}]{delay }\end{DoxyParamCaption})}
+
+
+
+Method to set default delay 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay} & New default delay\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_field_a8aadbd8bce8cb70d0b987706ac11639d}\label{class_field_a8aadbd8bce8cb70d0b987706ac11639d}} 
+\index{Field@{Field}!SetDelay@{SetDelay}}
+\index{SetDelay@{SetDelay}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{SetDelay()}{SetDelay()}}
+{\footnotesize\ttfamily void Field\+::\+Set\+Delay (\begin{DoxyParamCaption}\item[{double}]{delay }\end{DoxyParamCaption})}
+
+
+
+Setter for delay value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay} & New delay of field\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_field_aea22064b41925dce3dbf06acf888e20b}\label{class_field_aea22064b41925dce3dbf06acf888e20b}} 
+\index{Field@{Field}!SetElemField@{SetElemField}}
+\index{SetElemField@{SetElemField}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{SetElemField()}{SetElemField()}}
+{\footnotesize\ttfamily void Field\+::\+Set\+Elem\+Field (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{val }\end{DoxyParamCaption})}
+
+
+
+Set element in some position 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X of position\\
+\hline
+{\em y} & Y of position\\
+\hline
+{\em val} & Value to set\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_field_a843252fe9f43ceedfd7b1b1e74dc72aa}\label{class_field_a843252fe9f43ceedfd7b1b1e74dc72aa}} 
+\index{Field@{Field}!update@{update}}
+\index{update@{update}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily int Field\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updating of field 
+
+\begin{DoxyReturn}{Returns}
+Return number of lined wich will break
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_field_a76d85ee63f4de0a6a098a9ee1d6c2725}\label{class_field_a76d85ee63f4de0a6a098a9ee1d6c2725}} 
+\index{Field@{Field}!updateDynamicDelay@{updateDynamicDelay}}
+\index{updateDynamicDelay@{updateDynamicDelay}!Field@{Field}}
+\doxysubsubsection{\texorpdfstring{updateDynamicDelay()}{updateDynamicDelay()}}
+{\footnotesize\ttfamily void Field\+::update\+Dynamic\+Delay (\begin{DoxyParamCaption}\item[{double}]{time }\end{DoxyParamCaption})}
+
+
+
+Method to update dynamic delay with time variable 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Current time from beggining of the game\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Tetris/Field.\+h\item 
+Tetris/Field.\+cpp\end{DoxyCompactItemize}

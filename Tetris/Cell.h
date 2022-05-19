@@ -2,6 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Constants.h"
+/// <summary>
+/// Class - helper for draw functionality
+/// </summary>
 class Cell
 {
 public:

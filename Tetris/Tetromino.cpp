@@ -1,8 +1,10 @@
 #include "Tetromino.h"
-//Tetromino::Tetromino(Field& A)
-//{
-//	this->newTetromino(A);
-//}
+/// <summary>
+/// Constructor
+/// </summary>
+/// <param name="A">Field in wich we create tetromino</param>
+Tetromino::Tetromino(Field& A) : field(A) {
+}
 
 Tetromino::~Tetromino()
 {
@@ -30,7 +32,9 @@ bool Tetromino::checkUnder()
 	return true;
 
 }
-
+/// <summary>
+/// Method to rotate tetromino
+/// </summary>
 void Tetromino::rotate()
 {
 	if (this->type == static_cast<int>(constants::TetrominoType::O))
@@ -52,7 +56,11 @@ void Tetromino::rotate()
 	for (int i = 0; i < 4; i++)
 		a[i] = b[i];
 }
-
+/// <summary>
+/// Method to horizontal move of tetromino
+/// </summary>
+/// <param name="dx">Horizontal offset</param>
+/// <returns>Return true if horizontal move successful</returns>
 bool Tetromino::horizontalMoving(int dx)
 {
 	bool flag;
@@ -67,7 +75,10 @@ bool Tetromino::horizontalMoving(int dx)
 			a[i] = b[i];
 	return flag;
 }
-
+/// <summary>
+/// Method to fall tetromin in one block
+/// </summary>
+/// <returns>Return true if can't fall again</returns>
 bool Tetromino::falling()
 {
 	for (int i = 0; i < 4; i++)
@@ -83,7 +94,10 @@ bool Tetromino::falling()
 	}
 	return false;
 }
-
+/// <summary>
+/// Method to create new tetromino
+/// </summary>
+/// <param name="A">New field</param>
 void Tetromino::newTetromino(Field& A)
 {
 	this->field = A;
@@ -134,7 +148,11 @@ int Tetromino::Get_y(int i)
 	}
 	return a[i].y;
 }
-
+/// <summary>
+/// Method to draw tetromino
+/// </summary>
+/// <param name="window">Render window</param>
+/// <param name="cell">Object-heler</param>
 void Tetromino::draw(sf::RenderWindow& window, Cell cell)
 {
 	for (int i = 0; i < 4; i++)
@@ -156,7 +174,12 @@ void Tetromino::changeField(Field& B)
 	}
 }
 
-
+/// <summary>
+/// Overload of operator=.
+/// Copy the state of tetromino
+/// </summary>
+/// <param name="t">Tetromino to copy</param>
+/// <returns>Return referense to new tetromino</returns>
 Tetromino& Tetromino::operator = (const Tetromino& t)
 {
 	if (this == &t)

@@ -1,6 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Constants.h"
+/// <summary>
+/// Class to represent box to show statistic of game
+/// </summary>
 class StatisticBox
 {
 public:
