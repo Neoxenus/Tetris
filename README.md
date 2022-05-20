@@ -16,3 +16,5 @@ Score:
 
 Link for SFML library https://www.sfml-dev.org/
 This branck fully remaked with NugGet Packages. For run this project you need SDK for vs2017.
+
+Documentation there: https://neoxenus.github.io/Tetris/
